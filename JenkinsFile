@@ -13,7 +13,7 @@ pipeline{
             steps {
                 git branch: 'master', 
                     url: 'https://github.com/tamim-hmizi/avec-maven.git',
-                    credentialsId: 'fcaa0f28-a3aa-4b5d-a8d4-05f94d3f8e0e'
+                    credentialsId: '421f578a-8360-4777-a60b-926fec1d0647'
             }
         }
         stage('MAVEN') {
