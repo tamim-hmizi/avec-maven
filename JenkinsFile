@@ -1,0 +1,38 @@
+pipeline{
+    agent any
+    tools{
+        maven 'M2_HOME'
+    }
+    stages{
+         stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('GIT') {
+            steps {
+                git branch: 'master', 
+                    url: 'https://github.com/tamim-hmizi/avec-maven.git',
+                    credentialsId: 'fcaa0f28-a3aa-4b5d-a8d4-05f94d3f8e0e'
+            }
+        }
+        stage('MAVEN') {
+            steps {
+                script {
+                   bat 'mvn -v'
+                }
+            }
+        }
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
+    }
+}
